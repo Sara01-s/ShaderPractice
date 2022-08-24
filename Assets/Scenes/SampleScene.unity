@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973cce88fc583ea46bf805f0bff980e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replacementShader: {fileID: 4800000, guid: 4017388418667444fa0605a25e545bfb, type: 3}
+  _replacementShader: {fileID: 4800000, guid: f5b67b92b09fdd74d8e6d19815ad9601, type: 3}
 --- !u!1 &1048982807
 GameObject:
   m_ObjectHideFlags: 0
