@@ -2,7 +2,8 @@ Shader "Sara/Cull"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        _FrontTex ("Front Texture", 2D) = "white" {}
+        _BackTex ("Back Texture", 2D) = "red" {}
 
         [Enum(UnityEngine.Rendering.CullMode)]
             _Cull ("Cull mode", Float) = 0
@@ -45,25 +46,29 @@ Shader "Sara/Cull"
                 float4 vertex : SV_POSITION;
             };
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
+            sampler2D _FrontTex;
+            sampler2D _BackTex;
+            float4 _FrontTex_ST;
+            float4 _BackTex_ST;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv = TRANSFORM_TEX(v.uv, _FrontTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            // using a boolean SV_isFrontFace we can project different colors and textures
+            // on both faces
+            fixed4 frag (v2f i, bool face : SV_IsFrontFace) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
-                // apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                fixed4 frontColor = tex2D(_FrontTex, i.uv);
+                fixed4 backColor = tex2D(_BackTex, i.uv);
+                
+                return face ? frontColor : backColor;
             }
             ENDCG
         }
