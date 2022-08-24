@@ -1,11 +1,8 @@
-Shader "Sara/Properties/Toggle"
+Shader "Sara/SubShader/ZTest"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color ("Color", Color) = (1,1,1,1)
-        // Declarar enable como un toggle
-        [Toggle] _Enable ("Enable?", Float) = 0
     }
     SubShader
     {
@@ -15,7 +12,6 @@ Shader "Sara/Properties/Toggle"
         Pass
         {
             CGPROGRAM
-            #pragma shader_feature _ENABLE_ON
             #pragma vertex vert
             #pragma fragment frag
             // make fog work
@@ -38,7 +34,6 @@ Shader "Sara/Properties/Toggle"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float4 _Color;
 
             v2f vert (appdata v)
             {
@@ -53,13 +48,6 @@ Shader "Sara/Properties/Toggle"
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-
-                #if _ENABLE_ON
-                    return col * _Color;
-                #else
-                    return col;
-                #endif
-
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;

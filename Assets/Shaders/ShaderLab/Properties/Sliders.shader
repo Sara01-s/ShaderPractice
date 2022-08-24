@@ -1,4 +1,4 @@
-Shader "Unlit/Sliders"
+Shader "Sara/Properties/Sliders"
 {
     Properties
     {

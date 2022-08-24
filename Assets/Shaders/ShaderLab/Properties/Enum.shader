@@ -1,4 +1,4 @@
-Shader "Sara/Enum"
+Shader "Sara/Properties/Enum"
 {
     Properties
     {
