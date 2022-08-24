@@ -8,6 +8,20 @@ Shader "Sara/SubShader/ZTest"
     {
         Tags { "RenderType"="Opaque" }
         LOD 100
+        // ZTest controls how  Despth Testing is done, and is generally used in multi-pass
+        // shader to generate differences in colors and depths. This property has 7 values:
+
+        // Less      (<)   (Draw obj in front, ignores objects with same Z or behind)
+        // Greater   (>)   (Draws the objects behind, doesn't draw objects with same Z or in front)
+        // LEqual    (<=)  (DEFAULT VALUE, draws objects in front or same Z, but doesn't draw objects behind)
+        // GEqual    (>=)  (Draws objects behind or at the same distance, doesn't draw objects in front)
+        // Equal     (==)  (Draws objects at the same distance)
+        // Not Equal (!=)  (Draws objects that are not at the same distance)
+        // Always          (Draw all pixels, always).
+
+        // This values correspond to a comparision operation.
+
+        // ZTest LEqual (Default value)
 
         Pass
         {
