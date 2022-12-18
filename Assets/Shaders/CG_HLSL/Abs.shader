@@ -64,6 +64,15 @@ Shader "Sara/CG/Abs" {
 
             float _Rotation;
 
+            /*
+                abs(n) retuns absolute value of n 
+
+                (e.g.):
+                    abs(-2) = 2
+                    abs(-6) = 6 
+                    abs(7) = 7
+            */
+
             fixed4 frag (VertexOutput vertexData) : SV_Target {
                 
                 float  u = abs(vertexData.uv.x - 0.5);
