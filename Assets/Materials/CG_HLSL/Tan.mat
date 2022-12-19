@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SinCos
+  m_Name: Tan
   m_Shader: {fileID: 4800000, guid: d3d36577ae494164db8e201ffab02fba, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
