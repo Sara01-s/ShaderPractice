@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lerp
-  m_Shader: {fileID: 4800000, guid: 870fedf1cb42ce44987827f159e486fc, type: 3}
+  m_Name: Time
+  m_Shader: {fileID: 4800000, guid: 66e70aa281df4c149b71c3904903821f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ROTATIONAXIS_Z
@@ -57,14 +57,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Tex01:
-        m_Texture: {fileID: 2800000, guid: c3b3d89fb7f72754dad00cab234520bd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Tex02:
-        m_Texture: {fileID: 2800000, guid: eabb31998db3c2e4aa989debaf1b8335, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
@@ -74,7 +66,6 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Lerp: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
