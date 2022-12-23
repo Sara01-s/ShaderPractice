@@ -1,0 +1,33 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// kernel index 0
+#pragma kernel CSMain
+
+// example of kernel index 1
+// #pragma kernel CSFunction01
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> ComputeResult;
+
+Texture1D<float4> TextureColor;
+SamplerState TextureColorSampler;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+
+    uint width;
+    uint height;
+    
+    ComputeResult.GetDimensions(width, height);
+
+    // if the texture is set to "Wrap mode = Clamp"
+    float2 uv = float2(id.xy / float2(width, height));
+
+    // if the texture is set to "Wrap mode = Repeat"
+    // float2 uv = float2((id.xy + float2(0.5, 0.5) / float2(width, height)));
+
+    float4 textureColor = TextureColor.SampleLevel(TextureColorSampler, uv, 0);
+
+    ComputeResult[id.xy] = float4(0,1,0,1);
+}
