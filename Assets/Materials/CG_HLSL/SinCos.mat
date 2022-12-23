@@ -9,9 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: SinCos
   m_Shader: {fileID: 4800000, guid: d3d36577ae494164db8e201ffab02fba, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _ROTATIONAXIS_Z
+  m_ValidKeywords:
+  - _ROTATIONAXIS_Y
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -71,7 +71,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Rotation: 0
-    - _RotationAxis: 2
+    - _RotationAxis: 1
     - _RotationSpeed: 3
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

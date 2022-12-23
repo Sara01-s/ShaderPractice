@@ -1,20 +1,14 @@
-Shader "Sara/CG/Tan" {
+Shader "Sara/CG/Frac" {
 
     Properties {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color ("Tint", Color) = (1,1,1,1)
-        _Sections ("Sections", Range(2, 10)) = 10
+        _Size ("Size", Float) = 0
+        _Sections ("Sections", Float) = 0
     }
 
     SubShader {
 
-        // Added transparency
-        Tags { 
-            "RenderType"="Transparent"
-            "Queue"="Transparent" 
-        }
-
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags { "RenderType"="Opaque" }
         LOD 100
 
         Pass {
@@ -39,6 +33,8 @@ Shader "Sara/CG/Tan" {
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float _Size;
+            float _Sections;
 
             VertexOutput vert (VertexInput vertexInput) {
                 VertexOutput vertexOutput;
@@ -50,19 +46,15 @@ Shader "Sara/CG/Tan" {
                 return vertexOutput;
             }
 
-            float4 _Color;
-            float _Sections;
-
             fixed4 frag (VertexOutput vertexData) : SV_Target {
-                
-                fixed4 tanColor = clamp(0, abs(tan((vertexData.uv.y - _Time.x) * _Sections)), 1);
-                tanColor *= _Color;
 
-                fixed4 textureColor = tex2D(_MainTex, vertexData.uv) * tanColor;
+                vertexData.uv *= _Sections;
 
-                UNITY_APPLY_FOG(vertexData.fogCoord, textureColor);
+                float2 fracUV = frac(vertexData.uv);
+                float circle = length(fracUV - 0.5);
+                float flooredCircle = floor(_Size / circle);
 
-                return textureColor;
+                return float4(flooredCircle.xxx, 1);
             }
             
             ENDCG

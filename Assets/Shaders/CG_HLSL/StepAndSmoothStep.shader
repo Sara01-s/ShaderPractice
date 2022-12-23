@@ -51,7 +51,7 @@ Shader "Sara/CG/StepAndSmoothStep" {
                 //stepValue = step(edge, vertexData.uv.y);
                 stepValue = smoothstep((vertexData.uv.y - smooth), (vertexData.uv.y + smooth), edge);
 
-                return fixed4(stepValue, 1);;
+                return fixed4(stepValue, 1);
             }
             
             ENDCG

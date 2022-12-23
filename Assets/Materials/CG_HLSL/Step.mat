@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Step
-  m_Shader: {fileID: 4800000, guid: dd5e4ca7c2fa49a4581051d90a2093e5, type: 3}
+  m_Shader: {fileID: 4800000, guid: fd3428145f317704d86b239a2e2c5a59, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ROTATIONAXIS_Z
